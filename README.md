@@ -1,3 +1,5 @@
+This app was written in the beginning of 2013, my first solo app after Dev Bootcamp.
+
 Ideas
 =====
 
