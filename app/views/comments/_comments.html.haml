@@ -1,0 +1,9 @@
+.comments
+  %h5 Comments
+
+  .comments_list
+    - resource.comments.each do |comment|
+      = render partial: "comments/comment", locals: { comment: comment }
+
+  .add_comment
+    = render partial: "comments/form"

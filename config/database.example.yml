@@ -1,0 +1,14 @@
+development:
+  host: localhost
+  adapter: postgresql
+  database: ideas_development
+
+test:
+  host: localhost
+  adapter: postgresql
+  database: ideas_test
+
+production:
+  host: localhost
+  adapter: postgresql
+  database: ideas_production

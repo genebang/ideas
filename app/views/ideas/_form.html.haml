@@ -1,0 +1,12 @@
+= simple_form_for @idea do |f|
+  = f.input :title, input_html: { class: "input-xxlarge idea_title_input" }, html: { multipart: true }
+  = f.input :body, input_html: { :rows => 6, class: "input-xxlarge" }
+  = f.input :category, collection: CATEGORIES, input_html: { class: "input-medium" }
+  = f.input :priority, collection: PRIORITIES, input_html: { class: "input-mini" }
+  .input.add_attachments
+    = f.simple_fields_for :attachments do |builder|
+      = render 'attachments/form', f: builder
+    = link_to_add_fields "Add Image", f, :attachments
+  %br
+  = f.button :submit
+  = link_to "Cancel", ideas_path, class: 'btn'

@@ -1,0 +1,14 @@
+%p There is a new idea at ideas
+
+%p
+  Title: 
+  %br
+  = @idea.title
+
+%p
+  Description: 
+  %br
+  = @idea.body
+
+%p= link_to "Link to Idea Page", idea_url(@idea)
+

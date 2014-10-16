@@ -1,0 +1,19 @@
+%h3 Update Comment
+
+.idea
+  = render partial: "ideas/idea", locals: { resource: resource.idea }
+
+  - unless resource.idea.attachments.empty?
+    %strong Attachments:
+    %p
+      - resource.idea.attachments.each do |attachment|
+        = image_thumbnail(attachment)
+
+  %p
+    %small= post_info(resource)
+
+.comment
+  = simple_form_for [resource.idea, resource] do |f|
+    = f.input :body, input_html: { :rows => 6, class: "input-xxlarge comment_body_input" }, label: false
+    = f.button :submit, "Update Comment"
+    

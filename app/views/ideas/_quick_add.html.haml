@@ -1,0 +1,6 @@
+= simple_form_for @idea do |f|
+  = f.input :title, wrapper_html: { class: "input_wrapper" }, input_html: { style: "width: 510px" }
+  = f.input :category, collection: CATEGORIES, input_html: { class: "input-medium" }, wrapper_html: { class: "input_wrapper" }
+  = f.input :priority, collection: PRIORITIES, input_html: { class: "input-mini" }, wrapper_html: { class: "input_wrapper" }
+  .input_wrapper
+    = f.submit "Quick Add", class: "btn btn-primary", style: "margin-top: -10px"

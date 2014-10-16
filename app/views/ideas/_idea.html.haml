@@ -1,0 +1,9 @@
+.display_vote_counts
+  = display_vote_counts(resource)
+  %span{style: "padding-left: 8px"}Priority:
+  = display_priority(resource)
+
+%p
+  %strong= full_title(resource)
+
+%p= markdown resource.body.to_s

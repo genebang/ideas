@@ -1,0 +1,25 @@
+%h3 Idea
+
+.idea
+  = render "ideas/idea"
+  
+  - unless resource.attachments.empty?
+    %strong Attachments:
+    %p
+      - resource.attachments.each do |attachment|
+        = image_link(attachment)
+
+  %p
+    %small= post_info(resource)
+
+  %p.vote_buttons= display_voting(resource)
+
+  %p
+    - if owner?(resource)
+      .user_options 
+        = link_to "Edit", edit_idea_path(resource), class: "btn btn-primary btn-small"
+        .btn-group.pull-right
+          = archive_link(resource)
+          = delete_link(resource)
+
+= render partial: "comments/comments"

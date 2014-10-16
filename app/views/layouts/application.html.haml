@@ -1,0 +1,40 @@
+!!! 5
+%html
+  %head
+    %title Ideas
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %link{rel: "shortcut icon", href: ""}
+  %body
+    .navbar
+      .navbar-inner
+        %a.brand(href=root_path) Ideas
+        %ul.nav
+          - if user_signed_in?
+            %li.nav_li
+              = link_to "Home", ideas_path
+            %li.nav_li
+              = link_to "Add An Idea", new_idea_path
+            %li.nav_li
+              = link_to "Export CSV", savefile_path
+            %li.nav_li
+              = link_to "Archived Ideas", archived_path
+            - if current_user.email == "genebang@gmail.com"
+              %li.nav_li
+                = link_to "Import Ideas", import_form_path
+
+        %ul.nav.pull-right
+          - if user_signed_in?
+            %li 
+              = link_to current_user.email, edit_user_registration_path
+            %li 
+              = link_to "Logout", destroy_user_session_path, :method => :delete
+          - else
+            %li
+              = link_to "Sign In", new_user_session_path
+
+    .container
+      - flash.each do |name, message|
+        = content_tag :div, message, id: "flash_#{name}", class: "alert"
+      = yield

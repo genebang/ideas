@@ -1,0 +1,7 @@
+%h3 Import Ideas
+
+%p Row format: Priority, Title, Body
+
+= form_tag import_ideas_path, multipart: true do
+  = file_field_tag :file
+  = submit_tag "Import"

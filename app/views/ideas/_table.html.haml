@@ -1,0 +1,33 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th{ style: "width: 10%" }
+        = sort_link @search, :count_votes, "Votes", :default_order => :desc
+      %th{ style: "width: 10%" }
+        = sort_link @search, :priority, "Priority", :default_order => :a
+      %th{ style: "width: 45%" }
+        = sort_link @search, :title, "Title"
+      %th{ style: "width: 15%" }
+        Author
+      %th{ style: "width: 15%" }
+        = sort_link @search, :updated_at, "Last Updated", :default_order => :desc
+      %th{ style: "width: 5%" }
+        
+  %tbody
+  - @ideas.each do |idea|
+    %tr
+      %td= display_vote_counts(idea)
+      %td= display_priority(idea)
+      %td
+        = link_to full_title(idea), idea_path(idea)
+        %br
+        %small
+          .idea_excerpt= markdown_excerpt excerpt(idea.body.to_s)
+      %td
+        %small= idea.user.email
+      %td
+        %small= distance_with_time(idea.updated_at, true)
+      %td
+        = archive_button(idea)
+
+= paginate @ideas

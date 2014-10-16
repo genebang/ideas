@@ -1,0 +1,14 @@
+%p There is a new comment on your idea at ideas
+
+%p
+  Title: 
+  %br
+  = @comment.idea.title
+
+%p
+  Comment from 
+  = @comment.user.email
+  %br
+  = @comment.body
+
+%p= link_to "Link to Idea Page", idea_url(@comment.idea)

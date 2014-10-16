@@ -1,0 +1,18 @@
+%h3 Ideas Index
+
+%ul.nav.nav-tabs
+  %li#add_tab{style: "width: 50%; text-align: center;"}
+    %a Quick Add
+  %li#search_tab{style: "width: 50%; text-align: center;"} 
+    %a Search
+.well.well-small.page#add
+  = render "quick_add"
+.well.well-small.page#search
+  = simple_form_for @search, defaults: { required: false } do |f|
+    = f.input :title_or_body_contains, label: "Title/Desc", wrapper_html: { class: "input_wrapper" }, input_html: { style: "width: 373px" }
+    = f.input :category_eq, label: "Category", collection: CATEGORIES, wrapper_html: { class: "input_wrapper" }, input_html: { class: "input-medium"}
+    = f.input :user_email_contains, label: "Author", as: :string, wrapper_html: { class: "input_wrapper" }
+    .input_wrapper
+      = f.submit "Search", class: "btn btn-primary", style: "margin-top: -10px"
+
+= render "table"

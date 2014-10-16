@@ -1,0 +1,8 @@
+.comment
+  = markdown comment.body
+  %p
+    %small= post_info(comment)
+    -if owner?(comment)
+      /%p= link_to "Edit Comment", nil, class: 'btn btn-mini edit_comment', remote: true
+      /%p= link_to_add_comments "comment", comment, :comments
+      %p= link_to "Edit Comment", edit_idea_comment_path(comment.idea, comment), class: "btn btn-primary btn-mini"
